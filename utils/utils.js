@@ -455,20 +455,23 @@ function arrivalPage(url) {
     }, 15000);
 }
 function createCookie() {
-    // var name = 'ikeaTrafficSource'
-    // var url_string = window.location.href; //window.location.href
-    // var url = new URL(url_string);
+    var name = 'trafficSource'
+    var url_string = window.location.href; //window.location.href
+    var url = new URL(url_string);
     // var utm_sourceValue = url.searchParams.get("utm_source");
     // var utm_mediumValue = url.searchParams.get("utm_medium");
     // var utm_campaignValue = url.searchParams.get("utm_campaign");
     // var utm_source = 'utm_source';
     // var utm_medium = 'utm_medium';
     // var utm_campaign = 'utm_campaign';
+     var firstNameValue = url.searchParams.get("first_name");
+    var lastNameValue = url.searchParams.get("last_name");
+    var firstName = 'first_name';
+    var lastName ='last_name';
 
     //var str = name + '=' + value + expires + ';';
 
-    document.cookie = 'username=John Doe ; expires=Wed, 05 Aug 2022 23:00:00 UTC"';
-    
+    document.cookie = name + '='+firstName+'='+firstNameValue+'|'+lastName+'='+lastNameValue;
     
 }
 
