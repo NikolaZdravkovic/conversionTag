@@ -467,7 +467,8 @@ function createCookie() {
 
     //var str = name + '=' + value + expires + ';';
 
-    document.cookie = 'username=John Doe';
+    document.cookie = 'username=John Doe ; expires=Wed, 05 Aug 2022 23:00:00 UTC"';
+    
     
 }
 
