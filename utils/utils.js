@@ -448,11 +448,27 @@ function redirect(redirectUrl) {
     window.open(redirectUrl, "_blank");
 
 }
-function arrivalPage(url){
+function arrivalPage(url) {
     setTimeout(() => {
         window.location.href = url;
-       // alert('stigao sam u Ikeu!')
+        // alert('stigao sam u Ikeu!')
     }, 15000);
 }
+function createCookie() {
+    // var name = 'ikeaTrafficSource'
+    // var url_string = window.location.href; //window.location.href
+    // var url = new URL(url_string);
+    // var utm_sourceValue = url.searchParams.get("utm_source");
+    // var utm_mediumValue = url.searchParams.get("utm_medium");
+    // var utm_campaignValue = url.searchParams.get("utm_campaign");
+    // var utm_source = 'utm_source';
+    // var utm_medium = 'utm_medium';
+    // var utm_campaign = 'utm_campaign';
 
-export { double, mainFunction, redirect,arrivalPage }
+    //var str = name + '=' + value + expires + ';';
+
+    document.cookie = 'username=John Doe';
+    
+}
+
+export { double, mainFunction, redirect, arrivalPage, createCookie }
