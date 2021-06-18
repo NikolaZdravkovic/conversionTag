@@ -1,6 +1,6 @@
 import { mainFunction, arrivalPage } from './utils/utils.js';
 
-var url = 'http://127.0.0.1:5500/ikea.html';
+var url = 'https://nikolazdravkovic.github.io/ikeaTest/';
 
 mainFunction(document);
 
