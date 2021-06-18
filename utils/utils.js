@@ -444,16 +444,21 @@ function double(n) {
     return n * 2
 }
 
+// Otvori redirekt stranicu
 function redirect(redirectUrl) {
     window.open(redirectUrl, "_blank");
 
 }
+
+// Redirekt na Ikea sajt za 15 sekundi
 function arrivalPage(url) {
     setTimeout(() => {
         window.location.href = url;
         // alert('stigao sam u Ikeu!')
     }, 15000);
 }
+
+//Kreiraj mi cookie i uzmi parametre iz URL-a
 function createCookie() {
     var name = 'trafficSource'
     var url_string = window.location.href; //window.location.href
