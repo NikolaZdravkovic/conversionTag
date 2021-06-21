@@ -461,8 +461,10 @@ function arrivalPage(url) {
 //Kreiraj mi cookie i uzmi parametre iz URL-a
 function createCookie() {
     var name = 'trafficSource'
+    var receiver = document.getElementById('receiver').contentWindow;
     var url_string = window.location.href; //window.location.href
     var url = new URL(url_string);
+    var iframeSrc = document.getElementById('receiver').src;
     // var utm_sourceValue = url.searchParams.get("utm_source");
     // var utm_mediumValue = url.searchParams.get("utm_medium");
     // var utm_campaignValue = url.searchParams.get("utm_campaign");
@@ -474,9 +476,17 @@ function createCookie() {
     var firstName = 'first_name';
     var lastName ='last_name';
 
+    function sendMessage() {
+    
+        // Send a message with the text 'Hello Treehouse!' to the receiver window.
+        receiver.postMessage('Hello Treehouse!', iframeSrc);
+      }
+
     //var str = name + '=' + value + expires + ';';
 
-    document.cookie = name + '='+firstName+'='+firstNameValue+'|'+lastName+'='+lastNameValue;
+    //document.cookie = name + '='+firstName+'='+firstNameValue+'|'+lastName+'='+lastNameValue;
+
+      sendMessage()
     
 }
 
