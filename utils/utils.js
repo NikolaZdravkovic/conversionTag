@@ -58,11 +58,11 @@ function mainFunction(document) {
 
     if (url_string.indexOf('&' + fbclid + '=') != -1) {
         campaignTrafficSourceId = 'fbclid=' + fbclidValue;
-        newCookieValues.push(campaignTrafficSourceId)
+        newCookieValues.push(fbclid + '=' + campaignTrafficSourceId)
 
     } else if (url_string.indexOf('&' + gclid + '=') != -1) {
         campaignTrafficSourceId = 'gclid=' + gclidValue;
-        newCookieValues.push( campaignTrafficSourceId)
+        newCookieValues.push(gclid + '=' + campaignTrafficSourceId)
 
 
     } else if (url_string.indexOf('&' + msclkid + '=') != -1) {
@@ -137,10 +137,10 @@ function mainFunction(document) {
     if (!getCookie_('initialTrafficSource')) {
         writeCookie_('initialTrafficSource', newCookieVals.join('|'), cookieExpiration, '/', thisDomain, campaignTrafficSourceId);
     }
-    // if (!getCookie_('esvTrafficSource')) {
-    //     sessionStorage.setItem('cookieSession', 'false');
-    //     writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
-    // }
+    if (!getCookie_('esvTrafficSource')) {
+        sessionStorage.setItem('cookieSession', 'false');
+        writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
+    }
     if (cookieSession == 'true') {
         writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
         sessionStorage.setItem('cookieSession', 'false');
@@ -469,8 +469,9 @@ function arrivalPage(url) {
 
 //Kreiraj mi cookie i uzmi parametre iz URL-a
 function createCookie() {
-
+    var receiver = document.getElementById('receiver').contentWindow;
     var iframeSrc = document.getElementById('receiver').src;
+
   
     function sendMessage() {
 
@@ -478,6 +479,7 @@ function createCookie() {
         receiver.postMessage(newCookieValues, iframeSrc);
     }
 
+ 
     sendMessage()
 
 }
