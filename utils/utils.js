@@ -137,10 +137,10 @@ function mainFunction(document) {
     if (!getCookie_('initialTrafficSource')) {
         writeCookie_('initialTrafficSource', newCookieVals.join('|'), cookieExpiration, '/', thisDomain, campaignTrafficSourceId);
     }
-    if (!getCookie_('esvTrafficSource')) {
-        sessionStorage.setItem('cookieSession', 'false');
-        writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
-    }
+    // if (!getCookie_('esvTrafficSource')) {
+    //     sessionStorage.setItem('cookieSession', 'false');
+    //     writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
+    // }
     if (cookieSession == 'true') {
         writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
         sessionStorage.setItem('cookieSession', 'false');
