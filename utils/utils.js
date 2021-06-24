@@ -57,13 +57,18 @@ function mainFunction(document) {
     var cookieSession = sessionStorage.getItem('cookieSession');
 
     if (url_string.indexOf('&' + fbclid + '=') != -1) {
-        campaignTrafficSourceId = '|fbclid=' + fbclidValue;
+        campaignTrafficSourceId = 'fbclid=' + fbclidValue;
+        newCookieValues.push(campaignTrafficSourceId)
 
     } else if (url_string.indexOf('&' + gclid + '=') != -1) {
-        campaignTrafficSourceId = '|gclid=' + gclidValue;
+        campaignTrafficSourceId = 'gclid=' + gclidValue;
+        newCookieValues.push( campaignTrafficSourceId)
+
 
     } else if (url_string.indexOf('&' + msclkid + '=') != -1) {
-        campaignTrafficSourceId = '|msclkid=' + msclkidValue;
+        campaignTrafficSourceId = 'msclkid=' + msclkidValue;
+        newCookieVals.push( campaignTrafficSourceId)
+
     }
 
 
@@ -134,10 +139,10 @@ function mainFunction(document) {
     }
     if (!getCookie_('esvTrafficSource')) {
         sessionStorage.setItem('cookieSession', 'false');
-        writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), '/', thisDomain, 30, campaignTrafficSourceId);
+        writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
     }
     if (cookieSession == 'true') {
-        writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), '/', thisDomain, 30, campaignTrafficSourceId);
+        writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
         sessionStorage.setItem('cookieSession', 'false');
     }
 
@@ -146,16 +151,16 @@ function mainFunction(document) {
     writeCurrentCookie_('__utmzzses', 1, null, '/', thisDomain);
 
     // Replace cookie after 30 min
-    var countdown = 30 * 60 * 1000;
-    var timerId = setInterval(function () {
-        countdown -= 1000;
-        if (countdown <= 0) {
-            writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), '/', thisDomain, null, campaignTrafficSourceId);
-            sessionStorage.setItem('cookieSession', 'true');
-            clearInterval(timerId);
-        }
+    // var countdown = 30 * 60 * 1000;
+    // var timerId = setInterval(function () {
+    //     countdown -= 1000;
+    //     if (countdown <= 0) {
+    //         writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), '/', thisDomain, null, campaignTrafficSourceId);
+    //         sessionStorage.setItem('cookieSession', 'true');
+    //         clearInterval(timerId);
+    //     }
 
-    }, 1000);
+    // }, 1000);
 
 
     function parseGoogleParams(str) {
@@ -392,7 +397,7 @@ function mainFunction(document) {
         document.cookie = str;
 
     }
-    function writeCurrentCookie_(name, value, path, domain, minutes, id) {
+    function writeCurrentCookie_(name, value, id, minutes) {
 
         if (minutes) {
             var date = new Date();
@@ -408,8 +413,8 @@ function mainFunction(document) {
             var str = name + '=' + value + expires + ';';
         }
 
-        if (path) str += 'Path=' + path + ';';
-        if (domain) str += 'Domain=' + domain + ';';
+        //if (path) str += 'Path=' + path + ';';
+        //if (domain) str += 'Domain=' + domain + ';';
 
         document.cookie = str;
 
@@ -438,7 +443,10 @@ function mainFunction(document) {
         } catch (squelch) { }
 
     }
-    newCookieValues = newCookieVals
+    //newCookieValues.push(newCookieVals)
+    newCookieValues=newCookieVals;
+    // newCookieValues = [...newCookieValues, newCookieVals];
+   console.log(newCookieValues)
 }
 
 function double(n) {
@@ -478,23 +486,23 @@ function createCookie() {
     // var lastName ='last_name';
 
     var params = {
-        utm_campaign:utm_campaignValue,
-        utm_medium:utm_mediumValue,
-        utm_source:utm_sourceValue
+        utm_campaign: utm_campaignValue,
+        utm_medium: utm_mediumValue,
+        utm_source: utm_sourceValue
     }
 
     function sendMessage() {
-    
+
         // Send a message with the text 'Hello Treehouse!' to the receiver window.
         receiver.postMessage(newCookieValues, iframeSrc);
-      }
+    }
 
     //var str = name + '=' + value + expires + ';';
 
     //document.cookie = name + '='+firstName+'='+firstNameValue+'|'+lastName+'='+lastNameValue;
 
-      sendMessage()
-    
+    sendMessage()
+
 }
 
 export { double, mainFunction, redirect, arrivalPage, createCookie }
