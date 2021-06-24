@@ -443,7 +443,9 @@ function mainFunction(document) {
         } catch (squelch) { }
 
     }
+    //newCookieValues.push(newCookieVals)
     newCookieValues=newCookieVals;
+    // newCookieValues = [...newCookieValues, newCookieVals];
    console.log(newCookieValues)
 }
 
@@ -467,7 +469,9 @@ function arrivalPage(url) {
 
 //Kreiraj mi cookie i uzmi parametre iz URL-a
 function createCookie() {
-   
+
+    var iframeSrc = document.getElementById('receiver').src;
+  
     function sendMessage() {
 
         // Send a message with the text 'Hello Treehouse!' to the receiver window.
