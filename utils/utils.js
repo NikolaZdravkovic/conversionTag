@@ -137,10 +137,10 @@ function mainFunction(document) {
     if (!getCookie_('initialTrafficSource')) {
         writeCookie_('initialTrafficSource', newCookieVals.join('|'), cookieExpiration, '/', thisDomain, campaignTrafficSourceId);
     }
-    if (!getCookie_('esvTrafficSource')) {
-        sessionStorage.setItem('cookieSession', 'false');
-        writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
-    }
+    // if (!getCookie_('esvTrafficSource')) {
+    //     sessionStorage.setItem('cookieSession', 'false');
+    //     writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
+    // }
     if (cookieSession == 'true') {
         writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
         sessionStorage.setItem('cookieSession', 'false');
@@ -443,9 +443,7 @@ function mainFunction(document) {
         } catch (squelch) { }
 
     }
-    //newCookieValues.push(newCookieVals)
     newCookieValues=newCookieVals;
-    // newCookieValues = [...newCookieValues, newCookieVals];
    console.log(newCookieValues)
 }
 
@@ -469,37 +467,12 @@ function arrivalPage(url) {
 
 //Kreiraj mi cookie i uzmi parametre iz URL-a
 function createCookie() {
-    var name = 'trafficSource'
-    var receiver = document.getElementById('receiver').contentWindow;
-    var url_string = window.location.href; //window.location.href
-    var url = new URL(url_string);
-    var iframeSrc = document.getElementById('receiver').src;
-    var utm_sourceValue = url.searchParams.get("utm_source");
-    var utm_mediumValue = url.searchParams.get("utm_medium");
-    var utm_campaignValue = url.searchParams.get("utm_campaign");
-    // var utm_source = 'utm_source';
-    // var utm_medium = 'utm_medium';
-    // var utm_campaign = 'utm_campaign';
-    //  var firstNameValue = url.searchParams.get("first_name");
-    // var lastNameValue = url.searchParams.get("last_name");
-    // var firstName = 'first_name';
-    // var lastName ='last_name';
-
-    var params = {
-        utm_campaign: utm_campaignValue,
-        utm_medium: utm_mediumValue,
-        utm_source: utm_sourceValue
-    }
-
+   
     function sendMessage() {
 
         // Send a message with the text 'Hello Treehouse!' to the receiver window.
         receiver.postMessage(newCookieValues, iframeSrc);
     }
-
-    //var str = name + '=' + value + expires + ';';
-
-    //document.cookie = name + '='+firstName+'='+firstNameValue+'|'+lastName+'='+lastNameValue;
 
     sendMessage()
 
