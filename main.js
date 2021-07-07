@@ -6,5 +6,3 @@ var redirectUrl = 'https://nikolazdravkovic.github.io/conversionTag/redirect?utm
 button.addEventListener('click', function () {
     redirect(redirectUrl)
 })
-
-console.log(double(5))
