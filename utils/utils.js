@@ -464,7 +464,7 @@ function arrivalPage(url) {
     }, 15000);
 }
 
-//Kreiraj mi cookie i uzmi parametre iz URL-a
+//Create cookie and take params from URL-a
 function createCookie() {
     var receiver = document.getElementById('receiver').contentWindow;
     var iframeSrc = document.getElementById('receiver').src;
@@ -472,7 +472,7 @@ function createCookie() {
 
     function sendMessage() {
 
-        // Send a message with the text 'Hello Treehouse!' to the receiver window.
+        // Send a message to the receiver window.
         receiver.postMessage(newCookieValues, iframeSrc);
 
     }
@@ -481,6 +481,7 @@ function createCookie() {
     sendMessage()
 
 }
+// Set pixel Big Querry url 
 function setPixelQuerry() {
     var pixelQuerry = document.getElementById('pixelQuerry');
 
@@ -492,6 +493,8 @@ function setPixelQuerry() {
 
         var queryString = url.split('?').pop()
         console.log(queryString,'query string exists');
+        
+        // Here should go new url with HTTPS request instead of 'http://34.102.194.50/_115609394_gettyimages-1229584776-1.jpg'
         pixelQuerry.src = `http://34.102.194.50/_115609394_gettyimages-1229584776-1.jpg?${queryString}`
       }
   
