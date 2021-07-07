@@ -67,7 +67,7 @@ function mainFunction(document) {
 
     } else if (url_string.indexOf('&' + msclkid + '=') != -1) {
         campaignTrafficSourceId = 'msclkid=' + msclkidValue;
-        newCookieVals.push( campaignTrafficSourceId)
+        newCookieVals.push(campaignTrafficSourceId)
 
     }
 
@@ -134,9 +134,9 @@ function mainFunction(document) {
 
     }
 
-    if (!getCookie_('initialTrafficSource')) {
-        writeCookie_('initialTrafficSource', newCookieVals.join('|'), cookieExpiration, '/', thisDomain, campaignTrafficSourceId);
-    }
+    // if (!getCookie_('initialTrafficSource')) {
+    //     writeCookie_('initialTrafficSource', newCookieVals.join('|'), cookieExpiration, '/', thisDomain, campaignTrafficSourceId);
+    // }
     // if (!getCookie_('esvTrafficSource')) {
     //     sessionStorage.setItem('cookieSession', 'false');
     //     writeCurrentCookie_('esvTrafficSource', newCookieVals.join('|'), campaignTrafficSourceId, 30);
@@ -147,7 +147,7 @@ function mainFunction(document) {
     }
 
 
-    writeCookie_('__utmzzses', 1, null, '/', thisDomain);
+    //writeCookie_('__utmzzses', 1, null, '/', thisDomain);
     writeCurrentCookie_('__utmzzses', 1, null, '/', thisDomain);
 
     // Replace cookie after 30 min
@@ -444,14 +444,11 @@ function mainFunction(document) {
 
     }
     //newCookieValues.push(newCookieVals)
-    newCookieValues=newCookieVals;
+    newCookieValues = newCookieVals;
     // newCookieValues = [...newCookieValues, newCookieVals];
-   console.log(newCookieValues)
+    console.log(newCookieValues)
 }
 
-function double(n) {
-    return n * 2
-}
 
 // Otvori redirekt stranicu
 function redirect(redirectUrl) {
@@ -472,16 +469,32 @@ function createCookie() {
     var receiver = document.getElementById('receiver').contentWindow;
     var iframeSrc = document.getElementById('receiver').src;
 
-  
+
     function sendMessage() {
 
         // Send a message with the text 'Hello Treehouse!' to the receiver window.
         receiver.postMessage(newCookieValues, iframeSrc);
+
     }
 
- 
+
     sendMessage()
 
 }
+function setPixelQuerry() {
+    var pixelQuerry = document.getElementById('pixelQuerry');
 
-export { double, mainFunction, redirect, arrivalPage, createCookie }
+    var url = window.location.href;
+    var arr = url.split('?');
+
+       
+    if (url.match(/\?./)) {
+
+        var queryString = url.split('?').pop()
+        console.log(queryString,'query string exists');
+        pixelQuerry.src = `http://34.102.194.50/_115609394_gettyimages-1229584776-1.jpg?${queryString}`
+      }
+  
+}
+
+export { mainFunction, redirect, arrivalPage, createCookie, setPixelQuerry }

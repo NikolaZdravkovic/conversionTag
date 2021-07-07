@@ -1,6 +1,8 @@
-import { mainFunction, arrivalPage,createCookie } from './utils/utils.js';
+import { mainFunction, arrivalPage,createCookie ,setPixelQuerry} from './utils/utils.js';
 
 var url = 'https://nikolazdravkovic.github.io/ikeaTest/';
+
+setPixelQuerry();
 
 mainFunction(document);
 
