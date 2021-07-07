@@ -1,4 +1,4 @@
-import { double,  redirect } from './utils/utils.js';
+import { redirect } from './utils/utils.js';
 
 var button = document.getElementById('button');
 var redirectUrl = 'https://nikolazdravkovic.github.io/conversionTag/redirect?utm_source=newsletter&utm_medium=email&utm_campaign=nikola';
