@@ -495,7 +495,7 @@ function setPixelQuerry() {
         console.log(queryString,'query string exists');
         
         // Here should go new url with HTTPS request instead of 'http://34.102.194.50/_115609394_gettyimages-1229584776-1.jpg'
-        pixelQuerry.src = `http://34.102.194.50/_115609394_gettyimages-1229584776-1.jpg?${queryString}`
+        pixelQuerry.src = `https://34.149.85.73/pixel.png?${queryString}`
       }
   
 }
