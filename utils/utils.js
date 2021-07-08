@@ -481,23 +481,30 @@ function createCookie() {
     sendMessage()
 
 }
-// Set pixel Big Querry url 
-function setPixelQuerry() {
-    var pixelQuerry = document.getElementById('pixelQuerry');
+// Send request to BigQuery
 
-    var url = window.location.href;
-    var arr = url.split('?');
+function httpGetAsync() {
 
-       
-    if (url.match(/\?./)) {
+    var redirectUrl = window.location.href;
+    var queryString;
+    var queryURL;
 
-        var queryString = url.split('?').pop()
-        console.log(queryString,'query string exists');
-        
-        // Here should go new url with HTTPS request instead of 'http://34.102.194.50/_115609394_gettyimages-1229584776-1.jpg'
-        pixelQuerry.src = `https://34.149.85.73/pixel.png?${queryString}`
-      }
-  
+    if (redirectUrl.match(/\?./)) {
+
+        queryString = redirectUrl.split('?').pop()
+        console.log(queryString, 'query string exists');
+        queryURL = `https://bpt.easyvoyage.fr/pixel.png?${queryString}`
+
+    } else {
+        queryURL = 'https://bpt.easyvoyage.fr/pixel.png';
+    }
+    const http = new XMLHttpRequest()
+
+    http.open("GET", queryURL)
+    http.send()
+
+    http.onload = () => console.log(http.responseText)
 }
 
-export { mainFunction, redirect, arrivalPage, createCookie, setPixelQuerry }
+
+export { mainFunction, redirect, arrivalPage, createCookie, httpGetAsync }
