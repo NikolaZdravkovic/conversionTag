@@ -481,6 +481,12 @@ function createCookie() {
     sendMessage()
 
 }
+function setPixelQuery(){
+    var url = window.locaation.href;
+    var queryString = url.split('?').pop()
+    console.log(queryString,'query string exists');
+}
+
 // Send request to BigQuery
 
 function httpGetAsync() {
@@ -493,17 +499,22 @@ function httpGetAsync() {
 
         queryString = redirectUrl.split('?').pop()
         console.log(queryString, 'query string exists');
-        queryURL = `https://bpt.easyvoyage.fr/pixel.png?${queryString}`
+        //queryURL = `https://bpt.easyvoyage.fr/pixel.png?${queryString}`
+        queryURL = 'https://bpt.easyvoyage.fr/pixel.png?' + queryString
+
 
     } else {
         queryURL = 'https://bpt.easyvoyage.fr/pixel.png';
     }
-    const http = new XMLHttpRequest()
+    var http = new XMLHttpRequest()
 
     http.open("GET", queryURL)
     http.send()
 
-    http.onload = () => console.log(http.responseText)
+    // http.onload = () => console.log(http.responseText)
+    http.onload = function () { console.log(http.responseText) };
+
+
 }
 
 
