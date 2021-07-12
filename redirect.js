@@ -27,7 +27,7 @@ function prepareFrame() {
     ifrm.style.border = '0';
     document.body.appendChild(ifrm);
 }
-prepareFrame();
+//prepareFrame();
 
 // Send request to BigQuery
 
