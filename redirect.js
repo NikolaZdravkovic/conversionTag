@@ -57,8 +57,16 @@ function sendMessage() {
     receiver.postMessage(queryString, iframeSrc);
 
 }
+// Redirekt na Ikea sajt za 15 sekundi
+function arrivalPage() {
+    setTimeout(() => {
+        window.location.href = iframeSrc;
+        // alert('stigao sam u Ikeu!')
+    }, 15000);
+}
 
-getQuery();
+getQuery(); 
+sendMessage(); 
+arrivalPage();
 
-sendMessage()
 
