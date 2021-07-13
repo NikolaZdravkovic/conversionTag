@@ -37,7 +37,8 @@ function getQuery() {
 
     if (redirectUrl.match(/\?./)) {
 
-        queryString = redirectUrl.split('?').pop()
+        // queryString = redirectUrl.split('?').pop()
+        queryString = window.location.search;
         console.log(queryString);
 
 
@@ -71,7 +72,7 @@ function httpGetAsync() {
 
     if (queryString !== undefined) {
 
-        queryURL = 'https://bpt.easyvoyage.fr/pixel.png?' + queryString;
+        queryURL = 'https://bpt.easyvoyage.fr/pixel.png' + queryString;
 
 
     } else {
