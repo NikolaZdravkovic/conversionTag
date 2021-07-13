@@ -59,14 +59,37 @@ function sendMessage() {
 }
 // Redirekt na Ikea sajt za 15 sekundi
 function arrivalPage() {
-    setTimeout(() => {
+    setTimeout(function () {
         window.location.href = iframeSrc;
         // alert('stigao sam u Ikeu!')
     }, 15000);
 }
+// Send request to BigQuery
+function httpGetAsync() {
 
-getQuery(); 
-sendMessage(); 
-arrivalPage();
+    var queryURL;
+
+    if (queryString !== undefined) {
+
+        queryURL = 'https://bpt.easyvoyage.fr/pixel.png?' + queryString;
+
+
+    } else {
+        queryURL = 'https://bpt.easyvoyage.fr/pixel.png';
+    }
+    var http = new XMLHttpRequest()
+
+    http.open("GET", queryURL)
+    http.send()
+
+    http.onload = function () { console.log(http.responseText) };
+
+
+}
+
+getQuery();
+//sendMessage();
+//arrivalPage();
+httpGetAsync();
 
 
