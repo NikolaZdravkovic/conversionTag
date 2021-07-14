@@ -48,7 +48,7 @@ function getQuery() {
     }
 
 }
-getQuery();
+//getQuery();
 
 var receiver = document.getElementById('receiver').contentWindow;
 var iframeSrc = document.getElementById('receiver').src;
