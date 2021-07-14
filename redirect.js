@@ -27,7 +27,7 @@ function prepareFrame() {
     ifrm.style.border = '0';
     document.body.appendChild(ifrm);
 }
-//prepareFrame();
+prepareFrame();
 
 // Send request to BigQuery
 
@@ -48,6 +48,8 @@ function getQuery() {
     }
 
 }
+getQuery();
+
 var receiver = document.getElementById('receiver').contentWindow;
 var iframeSrc = document.getElementById('receiver').src;
 
@@ -55,9 +57,11 @@ var iframeSrc = document.getElementById('receiver').src;
 function sendMessage() {
 
     // Send a message to the receiver window.
-    receiver.postMessage(queryString, iframeSrc);
+    receiver.postMessage('hello', iframeSrc);
 
 }
+sendMessage();
+
 // Redirekt na Ikea sajt za 15 sekundi
 function arrivalPage() {
     setTimeout(function () {
@@ -65,6 +69,8 @@ function arrivalPage() {
         // alert('stigao sam u Ikeu!')
     }, 15000);
 }
+arrivalPage();
+
 // Send request to BigQuery
 function httpGetAsync() {
 
@@ -88,9 +94,6 @@ function httpGetAsync() {
 
 }
 
-getQuery();
-//sendMessage();
-//arrivalPage();
-httpGetAsync();
+//httpGetAsync();
 
 
