@@ -60,7 +60,7 @@ function getQuery() {
 function sendMessage(receiver,iframeSrc) {
 
     // Send a message to the receiver window.
-    receiver.postMessage(queryString, iframeSrc);
+    receiver.postMessage(queryString, iframeUrl);
 
 }
 // Redirekt na Ikea sajt za 15 sekundi
