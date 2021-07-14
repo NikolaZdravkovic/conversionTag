@@ -26,6 +26,10 @@ function prepareFrame() {
     ifrm.style.height = "0";
     ifrm.style.border = '0';
     document.body.appendChild(ifrm);
+    var receiver = document.getElementById('receiver').contentWindow;
+    var iframeSrc = document.getElementById('receiver').src;
+    getQuery();
+    sendMessage(receiver,iframeSrc);
 }
 prepareFrame();
 
@@ -48,11 +52,10 @@ function getQuery() {
     }
 
 }
-var receiver = document.getElementById('receiver').contentWindow;
-var iframeSrc = document.getElementById('receiver').src;
 
 
-function sendMessage() {
+
+function sendMessage(receiver,iframeSrc) {
 
     // Send a message to the receiver window.
     receiver.postMessage(queryString, iframeSrc);
@@ -88,8 +91,8 @@ function httpGetAsync() {
 
 }
 
-getQuery();
-sendMessage();
+// getQuery();
+// sendMessage();
 arrivalPage();
 //httpGetAsync();
 
