@@ -17,6 +17,7 @@
 
 var redirectUrl = window.location.href;
 var queryString;
+var iframeUrl;
 
 function prepareFrame() {
     var ifrm = document.createElement("iframe");
@@ -28,6 +29,7 @@ function prepareFrame() {
     document.body.appendChild(ifrm);
     var receiver = document.getElementById('receiver').contentWindow;
     var iframeSrc = document.getElementById('receiver').src;
+    iframeUrl = iframeSrc;
     getQuery();
     sendMessage(receiver,iframeSrc);
 }
