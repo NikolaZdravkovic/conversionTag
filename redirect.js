@@ -60,13 +60,13 @@ function getQuery() {
 function sendMessage(receiver,iframeSrc) {
 
     // Send a message to the receiver window.
-    receiver.postMessage(queryString, iframeUrl);
+    receiver.postMessage(queryString, iframeSrc);
 
 }
 // Redirekt na Ikea sajt za 15 sekundi
 function arrivalPage() {
     setTimeout(function () {
-        window.location.href = iframeSrc;
+        window.location.href = iframeUrl;
         // alert('stigao sam u Ikeu!')
     }, 15000);
 }
