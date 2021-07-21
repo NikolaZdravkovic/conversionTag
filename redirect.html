@@ -13,38 +13,30 @@
 
     <!-- <script src="redirect.js"></script> -->
 
-    <iframe onload="test()" id="receiver" width="0" height="0" src="https://nikolazdravkovic.github.io/ikeaTest/"
-        frameborder="0"></iframe>
+    <iframe onload="sendParams()" id="receiver" width="0" height="0"
+        src="https://nikolazdravkovic.github.io/esvPixelTest/" frameborder="0"></iframe>
 
     <script>
         var queryString;
         var redirectUrl = window.location.href;
         var iframeUrl = document.getElementById('receiver').src;
-        function test() {
+        function sendParams() {
             getQuery();
             document.getElementById('receiver').contentWindow.postMessage(queryString, iframeUrl);
-            arrivalPage();
-
+            arrivalPage()
         }
 
         function getQuery() {
             if (redirectUrl.match(/\?./)) {
-                // queryString = redirectUrl.split('?').pop()
                 queryString = window.location.search;
-                console.log(queryString);
-            } else {
-                console.log('query don`t exist')
             }
         }
-        //prepareFrame();
-
         function arrivalPage() {
             setTimeout(function () {
                 window.location.href = iframeUrl;
                 // alert('stigao sam u Ikeu!')
             }, 15000);
         }
-
 
     </script>
 </body>
