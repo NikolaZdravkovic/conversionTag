@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EASY VOYAGE SAJT</title>
 </head>
+
 <body>
     <h1> EASY VOYAGE</h1>
     <button id="button" style="margin-top: 1rem;">KUPI STOLICU</button>
 </body>
 <script type="module" src="main.js"></script>
+<script>
+
+    var newUrl = '';
+    window.addEventListener("message",function (e) {
+            console.log(e.data);//your data is captured in e.data 
+        }, false);
+</script>
+
 </html>
