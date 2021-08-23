@@ -13,10 +13,10 @@
 
     <!-- <script src="redirect.js"></script> -->
 
-    <iframe onload="sendParams()" id="receiver" width="0" height="0"
-        src="https://nikolazdravkovic.github.io/esvPixelTest/" frameborder="0"></iframe>
+    <!-- <iframe onload="sendParams()" id="receiver" width="0" height="0"
+        src="https://nikolazdravkovic.github.io/esvPixelTest/" frameborder="0"></iframe> -->
 
-    <script>
+    <!-- <script>
         var queryString;
         var redirectUrl = window.location.href;
         var iframeUrl = document.getElementById('receiver').src;
@@ -34,10 +34,27 @@
         function arrivalPage() {
             setTimeout(function () {
                 window.location.href = iframeUrl;
-                // alert('stigao sam u Ikeu!')
-            }, 15000);
-        }
+                }, 15000);
+            }
 
+    </script> -->
+
+    <script>
+// New example of postmessage
+
+        var targetWindow = window.open('https://nikolazdravkovic.github.io/esvPixelTest/');
+        var iframeUrl = 'https://nikolazdravkovic.github.io/esvPixelTest/';
+
+        setTimeout(function () {
+            targetWindow.postMessage("message", "*")
+        }, 4000);
+
+        function arrivalPage() {
+            setTimeout(function () {
+                window.location.href = iframeUrl;
+                }, 3000);
+            }
+            arrivalPage();
     </script>
 </body>
 
