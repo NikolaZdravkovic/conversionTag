@@ -39,17 +39,48 @@
 
     </script> -->
 
-    <script>
+    <!-- <script>
 // New example of postmessage
 
         var iframeUrl = 'https://nikolazdravkovic.github.io/esvPixelTest/';
         var targetWindow = window.open('https://nikolazdravkovic.github.io/esvPixelTest/');
+        console.log(targetWindow)
 
-        setTimeout(function () {
-            targetWindow.postMessage("message", "*")
-        }, 4000);
+        if(targetWindow===null){
+            setTimeout(function () {
+           
+           targetWindow.postMessage("message", "*")
+       }, 4000);
+            }
+      
 
    
+    </script> -->
+
+    <script>
+        //SCRIPT WITH # SOLUTION
+        var queryString;
+        var queryStringValue;
+        var redirectUrl = window.location.href;
+
+
+        function getQuery() {
+            if (redirectUrl.match(/\?./)) {
+                queryString = window.location.search;
+                queryStringValue = queryString.substring(1)
+            }
+        }
+        getQuery();
+        localStorage.setItem('query', queryStringValue);
+
+        function arrivalPage() {
+       
+            var hash =  localStorage.getItem('query');
+            setTimeout(function () {
+                window.location.href = `https://nikolazdravkovic.github.io/esvPixelTest/#${hash}`;
+                }, 15000);
+            }
+            arrivalPage();
     </script>
 </body>
 
