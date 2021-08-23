@@ -42,10 +42,10 @@
     <script>
 // New example of postmessage
 
-        var targetWindow = window.open('https://nikolazdravkovic.github.io/esvPixelTest/');
         var iframeUrl = 'https://nikolazdravkovic.github.io/esvPixelTest/';
 
         setTimeout(function () {
+            var targetWindow = window.open('https://nikolazdravkovic.github.io/esvPixelTest/');
             targetWindow.postMessage("message", "*")
         }, 3000);
 
