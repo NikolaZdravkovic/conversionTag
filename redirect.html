@@ -11,14 +11,14 @@
 <body style="background-color:cadetblue">
     <h1 style="text-align: center;">REDIRECT PAGE</h1>
     <br><br>
-    <h2 style="text-align: center;">Wait for 15 sec</h2>
+    <h2 style="text-align: center;">Wait for <span id="seconds">15</span> sec </h2>
     <script>
         //SCRIPT WITH # SOLUTION
         var queryString;
         var queryStringValue;
         var redirectUrl = window.location.href;
 
-
+        //get querry from redirect page
         function getQuery() {
             if (redirectUrl.match(/\?./)) {
                 queryString = window.location.search;
@@ -26,16 +26,30 @@
             }
         }
         getQuery();
+
+        //Set query params as value inside Local Storage ( you can than access it globaly with getItem() and add in landing page url)
         localStorage.setItem('query', queryStringValue);
 
         function arrivalPage() {
-       
-            var hash =  localStorage.getItem('query');
+
+            var hash = localStorage.getItem('query');
             setTimeout(function () {
                 window.location.href = `https://nikolazdravkovic.github.io/esvPixelTest/#${hash}`;
-                }, 15000);
+            }, 15000);
+        }
+        arrivalPage();
+        var timeLeft = 15;
+
+        
+        function countdown() {
+            timeLeft--;
+            document.getElementById("seconds").innerHTML = String(timeLeft);
+            if (timeLeft > 0) {
+                setTimeout(countdown, 1000);
             }
-            arrivalPage();
+        };
+
+        setTimeout(countdown, 1000);
     </script>
 </body>
 
